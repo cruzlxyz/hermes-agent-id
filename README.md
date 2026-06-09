@@ -1,92 +1,39 @@
-# Hermes Skills Indonesia
+# Hermes Skills Indonesia: Crypto & Onchain
 
-Kumpulan **Hermes Agent skills** berbahasa Indonesia: panduan kerja praktis yang bisa dipasang di Hermes agar agent lebih jago menjalankan tugas tertentu.
+Kumpulan **Hermes Agent skills** berbahasa Indonesia yang berfokus pada **Onchain, Crypto, Wallet, dan DePIN (Decentralized Physical Infrastructure Networks)**. 
 
-Repo ini dibuat untuk orang Indonesia yang ingin memakai Hermes dengan cara yang mudah, jelas, dan bisa langsung dicoba.
+Tujuan repo ini adalah menyediakan panduan praktis, aman, dan mudah dipahami untuk mengintegrasikan teknologi blockchain (seperti Base MCP dan Tempo MPP) ke dalam workflow Hermes Agent.
 
-## Apa itu Hermes Skill?
+## Daftar Skill Crypto & Onchain
 
-Skill adalah file `SKILL.md` berisi prosedur reusable untuk Hermes Agent. Isinya bisa berupa:
+1. **`base-mcp-setup`**: Panduan setup Model Context Protocol (MCP) untuk menghubungkan Hermes dengan Base & Coinbase Developer Platform (CDP).
+2. **`tempo-mpp-setup`**: Panduan setup Machine Payments Protocol (MPP) agar Hermes bisa membayar layanan AI (DeepSeek/Exa) menggunakan saldo Tempo via WSL Ubuntu di Windows.
+3. **`contoh-basic`**: Template dasar untuk membuat skill baru.
 
-- kapan skill dipakai,
-- langkah kerja yang jelas,
-- command yang perlu dijalankan,
-- checklist verifikasi,
-- jebakan umum dan solusinya.
+## Tata Cara Instalasi & Penggunaan
 
-Hermes bisa memuat skill ini saat user meminta tugas yang relevan, jadi agent tidak perlu menebak-nebak workflow dari nol.
+Semua skill di repo ini mengikuti format standar Hermes dan disimpan dalam folder `skills/`. 
 
-## Struktur Repo
-
-```text
-.
-├── skills/                 # Skill siap pakai
-│   └── contoh-basic/       # Contoh skill pertama
-│       └── SKILL.md
-├── templates/              # Template untuk membuat skill baru
-│   └── SKILL.template.md
-├── docs/                   # Panduan bahasa Indonesia
-│   ├── cara-pasang.md
-│   └── cara-buat-skill.md
-├── CONTRIBUTING.md         # Cara kontribusi
-└── README.md
-```
-
-## Cara Pakai Skill dari Repo Ini
-
-### Opsi 1 — install langsung dari URL `SKILL.md`
-
-Kalau repo sudah dipush ke GitHub, skill bisa dipasang seperti ini:
+Untuk menginstal skill ini agar langsung dipakai di Hermes, jalankan command berikut di terminal (sesuaikan `USERNAME` dengan github kamu):
 
 ```bash
-hermes skills install https://raw.githubusercontent.com/USERNAME/hermes-skills-indonesia/main/skills/contoh-basic/SKILL.md
+# Install skill Base MCP
+hermes skills install https://raw.githubusercontent.com/USERNAME/hermes-skills-indonesia/main/skills/base-mcp-setup/SKILL.md
+
+# Install skill Tempo MPP
+hermes skills install https://raw.githubusercontent.com/USERNAME/hermes-skills-indonesia/main/skills/tempo-mpp-setup/SKILL.md
 ```
 
-Ganti `USERNAME` dengan username GitHub pemilik repo.
-
-### Opsi 2 — copy ke folder Hermes lokal
-
-Di Windows/Git Bash:
-
+Atau, untuk memasangnya manual (copy file), letakkan `SKILL.md` ke dalam folder berikut di sistemmu:
 ```bash
-mkdir -p ~/.hermes/skills/community/contoh-basic
-cp skills/contoh-basic/SKILL.md ~/.hermes/skills/community/contoh-basic/SKILL.md
+~/.hermes/skills/onchain/base-mcp-setup/SKILL.md
+~/.hermes/skills/onchain/tempo-mpp-setup/SKILL.md
 ```
 
-Lalu mulai sesi Hermes baru atau pakai `/reload-skills` kalau tersedia di sesi kamu.
+## Kontribusi
 
-### Opsi 3 — tambahkan repo sebagai skill tap
-
-Jika repo sudah ada di GitHub:
-
-```bash
-hermes skills tap add https://github.com/USERNAME/hermes-skills-indonesia
-hermes skills browse
-```
-
-## Prinsip Skill di Repo Ini
-
-1. **Bahasa Indonesia dulu** — simpel, natural, tidak terlalu formal.
-2. **Langsung bisa dipakai** — jangan cuma teori; kasih langkah nyata.
-3. **Ada verifikasi** — agent harus tahu cara mengecek hasilnya benar.
-4. **Aman** — command destruktif harus dijelaskan dan tidak dijalankan sembarangan.
-5. **Bermanfaat untuk umum** — bukan cuma cocok di satu komputer pribadi.
-
-## Ide Skill yang Bisa Ditambahkan
-
-- setup Telegram bot dengan Hermes
-- pakai Tempo MPP dari Hermes
-- workflow Base MCP / wallet onchain
-- bikin ringkasan YouTube bahasa Indonesia
-- QA website sederhana
-- bikin PR GitHub dari issue
-- generate konten sosial media
-- riset token/proyek crypto secara aman
-
-## Status
-
-Repo lokal awal sudah siap. Setelah dicek, push ke GitHub dan share URL-nya agar orang lain bisa install skill dari sini.
+Ingin berkontribusi menambah skill onchain yang bermanfaat? Silakan cek `CONTRIBUTING.md` dan ikuti aturan penulisannya!
 
 ## Lisensi
 
-MIT — bebas dipakai, dimodifikasi, dan dibagikan.
+MIT License

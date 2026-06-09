@@ -1,18 +1,18 @@
-# Kontribusi ke Hermes Skills Indonesia
+# Kontribusi ke Hermes Skills Indonesia: Crypto & Onchain
 
-Makasih sudah mau bantu bikin skill Hermes yang bermanfaat untuk banyak orang.
+Makasih sudah mau bantu bikin skill Hermes yang bermanfaat untuk ekosistem crypto Indonesia!
 
 ## Cara Menambah Skill Baru
 
 1. Copy template:
 
 ```bash
-mkdir -p skills/nama-skill
-cp templates/SKILL.template.md skills/nama-skill/SKILL.md
+mkdir -p skills/nama-skill-crypto
+cp templates/SKILL.template.md skills/nama-skill-crypto/SKILL.md
 ```
 
-2. Edit `skills/nama-skill/SKILL.md`.
-3. Jalankan validasi:
+2. Edit `skills/nama-skill-crypto/SKILL.md` dengan tata cara yang jelas.
+3. Jalankan validasi untuk memastikan formatmu benar:
 
 ```bash
 python scripts/validate_skills.py
@@ -21,33 +21,20 @@ python scripts/validate_skills.py
 4. Commit perubahan:
 
 ```bash
-git add skills/nama-skill/SKILL.md
-git commit -m "feat: tambah skill nama-skill"
+git add skills/nama-sisk-crypto/SKILL.md
+git commit -m "feat: tambah skill setup [Nama_Skill]"
 ```
 
-## Aturan Penulisan
+## Fokus Utama
 
-- Pakai bahasa Indonesia yang mudah dipahami.
-- Tetap tulis `description` dengan pola `Use when ...` agar mudah dicocokkan oleh agent.
-- Kasih langkah kerja yang konkret.
-- Tambahkan checklist verifikasi.
-- Jangan commit credential: API key, private key, seed phrase, token, password, file `.env`.
+Repo ini khusus untuk skill yang berkaitan dengan:
+- Setup Wallet Onchain
+- Integrasi Agen DePIN
+- Pembayaran Agen AI (MPP)
+- Interaksi RPC/Contract menggunakan Hermes
 
-## Format Commit
+## Aturan Penulisan & Tata Cara
 
-Contoh:
-
-```text
-feat: tambah skill riset-crypto-aman
-fix: perbaiki contoh instalasi skill
-docs: tambah panduan kontribusi
-```
-
-## Review Sederhana
-
-Sebelum submit, tanya diri sendiri:
-
-- Apakah skill ini bisa dipakai orang lain?
-- Apakah langkahnya jelas?
-- Apakah ada cara verifikasi?
-- Apakah tidak ada secret/data sensitif?
+- **Tata Cara Harus Jelas**: Jangan hanya bilang "Jalankan script". Berikan step-by-step command yang benar-benar bisa diikuti di Windows, WSL, atau Linux.
+- **Keamanan:** Ingatkan user untuk tidak menaruh API Key, Mnemonic, atau Seed Phrase di dalam `SKILL.md`. Simpan semuanya di `~/.env` atau environment variable.
+- **Testnet Dulu:** Jika skill berurusan dengan uang real/Mainnet, mintalah user untuk mencoba di Testnet (Sepolia, dll) terlebih dahulu di langkah verifikasi.
