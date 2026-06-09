@@ -32,80 +32,70 @@ Pakai skill ini saat:
    - Buat API Key baru (kamu akan dapet file JSON berisi `name` dan `privateKey`).
 2. **Node.js / npx:** Terinstall di sistem Windows/WSL kamu untuk menjalankan server MCP-nya.
 
-## Langkah-Langkah Setup
+## Langkah-Langkah Setup (Tata Cara Jelas & Mudah)
 
-### 1. Set API Credentials di `.env` Hermes
+### 1. Simpan API Key di `.env` Hermes
 
-Simpan credential CDP kamu di file env Hermes agar aman. Di Git Bash:
-
+Jangan simpan API Key langsung di dalam skill! Kita simpan di file rahasia `.env` milik Hermes. 
+Di terminal Git Bash kamu, jalankan:
 ```bash
-# Buka env Hermes
 hermes config env-path
 ```
+*Catat path yang muncul, lalu buka file tersebut menggunakan Notepad.*
 
-Tambahkan baris berikut ke file `.env` kamu (sesuaikan dengan API Key yang kamu download dari CDP portal):
+Tambahkan 2 baris ini di bagian paling bawah file `.env` (salin persis dari file JSON yang kamu download dari CDP):
 
 ```env
-# CDP API Key Name (bisa langsung dicopy dari file JSON CDP)
-CDP_API_KEY_NAME="organizations/[org-id]/apiKeys/[api-key-id]"
-
-# CDP API Key Private Key (berisi string panjang yang dimulai dengan string terenkripsi, copy mentah-mentah saja)
-CDP_API_KEY_PRIVATE_KEY="-----BEGIN EC PRIVATE KEY-----\n[your-private-key-data-here]\n-----END EC PRIVATE KEY-----"
+CDP_API_KEY_NAME="organizations/[ID ORG KAMU]/apiKeys/[ID API KAMU]"
+CDP_API_KEY_PRIVATE_KEY=[SALIN STRING PANJANG DARI FILE JSON KAMU]
 ```
-*Penting: Saat menyalin string `CDP_API_KEY_PRIVATE_KEY` dari file JSON kamu, pastikan karakter newline `\n` terbaca dengan benar di `.env`.*
+*Penting: Saat menyalin `CDP_API_KEY_PRIVATE_KEY`, salin seluruh baris persis seperti di file JSON (termasuk awal-akhir string).*
 
-### 2. Tambahkan Base MCP ke Hermes
+### 2. Daftarkan Server MCP ke Hermes
 
-Jalankan perintah ini untuk mendaftarkan server Base MCP ke konfigurasi Hermes:
+Jalankan perintah ini di terminal Git Bash untuk memberitahu Hermes bahwa ada server MCP baru bernama `base-mcp`:
 
 ```bash
 hermes mcp add base-mcp --command "npx" --args "-y @coinbase/mcp-server"
 ```
+*Pastikan Node.js/Npx sudah terinstall. Jika belum, download installer Node.js dari nodejs.org.*
 
-*Catatan untuk Windows:* Pastikan `npx` sudah terinstall dan bisa dipanggil dari terminal Git Bash kamu.
+### 3. Verifikasi Koneksi
 
-### 3. Verifikasi Koneksi MCP
-
-Cek apakah server MCP sudah terdaftar dengan benar:
+Cek apakah server MCP sudah terdaftar dengan benar di Hermes:
 
 ```bash
 hermes mcp list
 ```
-
-Jika terdaftar, lakukan tes koneksi:
-
+Jika ada tulisan `base-mcp`, lanjut tes koneksinya:
 ```bash
 hermes mcp test base-mcp
 ```
 
-### 4. Restart Hermes Sesi Baru
+### 4. Mulai Sesi Baru
 
-Buka sesi chat Hermes baru agar toolset baru dari Base MCP (seperti `get_balance`, `request_faucet`, `transfer`, dll.) dimuat sepenuhnya:
-
+Buka sesi chat Hermes baru agar toolset baru (seperti `get_balance`, `request_faucet`, `transfer`) dimuat sepenuhnya:
 ```bash
 hermes
 ```
-*(atau ketik `/reset` di dalam sesi chat aktif)*
 
 ## Cara Penggunaan (Prompt Contoh)
 
 Setelah aktif, kamu bisa menyuruh Hermes melakukan hal-hal ini dalam bahasa Indonesia santai:
 
 - **Cek Saldo:**
-  *"Cek saldo wallet Base gue dong"* atau *"Berapa alamat wallet Base lo?"*
+  *"Cek saldo wallet Base gue dong"*
 - **Minta Faucet (Testnet):**
   *"Tolong minta koin gratis (faucet) ke wallet lo di Base Sepolia"*
 - **Transfer Token:**
   *"Kirim 0.001 ETH Sepolia ke alamat 0x123..."*
-- **Cek Transaksi:**
-  *"Tolong cek status tx hash 0xabc..."*
 
 ## Common Pitfalls
 
 1. **Error: `npx: command not found`**
    - Solusi: Install Node.js di Windows terlebih dahulu. Download dari [nodejs.org](https://nodejs.org/).
 2. **Koneksi Test Gagal (`mcp test` error):**
-   - Pastikan format `CDP_API_KEY_PRIVATE_KEY` di `.env` sudah benar dan tidak ada karakter `\n` yang rusak. Karakter newline `\n` harus ditulis persis seperti teks mentah dari file JSON CDP.
+   - Pastikan format `CDP_API_KEY_PRIVATE_KEY` di `.env` sudah benar dan tidak ada karakter newline `\n` yang rusak.
 3. **Wallet Mainnet vs Testnet:**
    - Secara default, Base MCP biasanya beroperasi di Base Sepolia (Testnet). Jangan mengirim dana real/Mainnet dalam jumlah besar sebelum kamu yakin konfigurasinya sudah di-switch ke Mainnet dan aman.
 

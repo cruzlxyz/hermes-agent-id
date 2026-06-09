@@ -1,39 +1,53 @@
-# Hermes Skills Indonesia: Crypto & Onchain
+# Hermes Agent ID 🤖🇮🇩
 
-Kumpulan **Hermes Agent skills** berbahasa Indonesia yang berfokus pada **Onchain, Crypto, Wallet, dan DePIN (Decentralized Physical Infrastructure Networks)**. 
+Panduan paling mudah dan jelas untuk orang awam agar bisa setup Hermes Agent, memahami ekosistem skill, dan menggunakan fitur Onchain & Crypto (Base MCP, Tempo MPP). 
 
-Tujuan repo ini adalah menyediakan panduan praktis, aman, dan mudah dipahami untuk mengintegrasikan teknologi blockchain (seperti Base MCP dan Tempo MPP) ke dalam workflow Hermes Agent.
+Dibuat dengan bahasa Indonesia santai agar bisa langsung dipraktikkan!
 
-## Daftar Skill Crypto & Onchain
+## 1. Apa Itu Hermes Agent?
+Hermes Agent adalah AI yang berjalan di komputer kamu. Beda dengan ChatGPT biasa, Hermes bisa mengakses file di komputermu, menjalankan terminal, browsing internet, dan yang paling canggih: **bisa diajari skill baru**.
 
-1. **`base-mcp-setup`**: Panduan setup Model Context Protocol (MCP) untuk menghubungkan Hermes dengan Base & Coinbase Developer Platform (CDP).
-2. **`tempo-mpp-setup`**: Panduan setup Machine Payments Protocol (MPP) agar Hermes bisa membayar layanan AI (DeepSeek/Exa) menggunakan saldo Tempo via WSL Ubuntu di Windows.
-3. **`contoh-basic`**: Template dasar untuk membuat skill baru.
-
-## Tata Cara Instalasi & Penggunaan
-
-Semua skill di repo ini mengikuti format standar Hermes dan disimpan dalam folder `skills/`. 
-
-Untuk menginstal skill ini agar langsung dipakai di Hermes, jalankan command berikut di terminal (sesuaikan `USERNAME` dengan github kamu):
+## 2. Tata Cara Install Hermes (Untuk Pemula)
+Pastikan kamu sudah install **Python** dan **Git** di Windows kamu. Buka terminal Git Bash, lalu jalankan:
 
 ```bash
-# Install skill Base MCP
-hermes skills install https://raw.githubusercontent.com/USERNAME/hermes-skills-indonesia/main/skills/base-mcp-setup/SKILL.md
-
-# Install skill Tempo MPP
-hermes skills install https://raw.githubusercontent.com/USERNAME/hermes-skills-indonesia/main/skills/tempo-mpp-setup/SKILL.md
+curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
 ```
-
-Atau, untuk memasangnya manual (copy file), letakkan `SKILL.md` ke dalam folder berikut di sistemmu:
+Setelah selesai, jalankan setup wizard untuk mengatur API Key model AI (OpenRouter, DeepSeek, dll):
 ```bash
-~/.hermes/skills/onchain/base-mcp-setup/SKILL.md
-~/.hermes/skills/onchain/tempo-mpp-setup/SKILL.md
+hermes setup
 ```
 
-## Kontribusi
+## 3. Apa Itu "Skill" di Hermes?
+Skill adalah "buku panduan" berformat markdown (`SKILL.md`) yang kita berikan ke Hermes. Skill memberitahu Hermes *bagaimana* cara menyelesaikan tugas spesifik dengan benar. 
 
-Ingin berkontribusi menambah skill onchain yang bermanfaat? Silakan cek `CONTRIBUTING.md` dan ikuti aturan penulisannya!
+Di repo ini, kita menyediakan skill yang sudah jadi untuk keperluan Onchain & Crypto.
 
-## Lisensi
+## 4. Daftar Skill Onchain & Crypto (Tata Caranya)
+Klik link di bawah ini untuk membaca tata cara setup yang jelas dan langkah demi langkah:
 
-MIT License
+| Nama Skill | Fungsi Utama | Tata Cara Setup |
+| :--- | :--- | :--- |
+| **Base MCP** | Menghubungkan Hermes ke wallet Base (Coinbase), minta faucet, cek saldo, transfer token. | [Lihat Tata Cara](./skills/base-mcp-setup/SKILL.md) |
+| **Tempo MPP** | Menghubungkan Hermes ke Tempo Machine Payments Protocol (bayar DeepSeek/Exa pakai saldo Tempo). | [Lihat Tata Cara](./skills/tempo-mpp-setup/SKILL.md) |
+
+## 5. Bagaimana Cara Install Skill ke Hermes?
+Buka terminal Git Bash kamu, lalu copy-paste perintah ini untuk memasang skill langsung dari repo ini (ganti `cruzlxyz` dengan nama kamu jika berbeda):
+
+```bash
+# Install panduan Base MCP
+hermes skills install https://raw.githubusercontent.com/cruzlxyz/hermes-agent-id/main/skills/base-mcp-setup/SKILL.md
+
+# Install panduan Tempo MPP
+hermes skills install https://raw.githubusercontent.com/cruzlxyz/hermes-agent-id/main/skills/tempo-mpp-setup/SKILL.md
+```
+
+## 6. Cara Menggunakan Skill yang Sudah Terinstall
+Setelah skill terinstall, kamu tidak perlu melakukan apa-apa lagi secara teknis. Cukup buka Hermes (`hermes`), dan ajak bicara dengan bahasa Indonesia:
+
+*   **Minta setup Base MCP:** *"Bantuin gw setup Base MCP sesuai tata cara di skill lo dong"*
+*   **Minta cek saldo:** *"Cek saldo wallet Base gw di Testnet"* (Agent akan otomatis membaca `SKILL.md` Base MCP yang sudah kamu install).
+*   **Minta bayar API Tempo:** *"Pake Tempo buat minta jawaban DeepSeek..."*
+
+---
+*Living decentralized ✨*
