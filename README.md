@@ -58,3 +58,10 @@ Setelah skill terinstall, kamu tidak perlu melakukan apa-apa lagi secara teknis.
 
 ---
 *Living decentralized ✨*
+
+
+## Maintenance notes
+
+- Repository owner: cruzlxyz
+- Last housekeeping pass: 2026-06-27
+- Achievement test: yolo-branch workflow
